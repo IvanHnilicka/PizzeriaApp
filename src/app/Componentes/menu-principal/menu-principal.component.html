@@ -1,0 +1,7 @@
+<div class="h-full w-full">
+    <header class="p-8 flex justify-between bg-orange-400">
+        <h1 class="text-2xl text-white font-bold">Bienvenido {{ usuario.nombre.split(' ')[0] }}</h1>
+        <button class="px-4 py-1 text-white text-lg font-bold border-2 border-solid border-white rounded-full hover:bg-white hover:text-orange-400"
+        (click)="logOut()">Cerrar Sesión</button>
+    </header>
+</div>

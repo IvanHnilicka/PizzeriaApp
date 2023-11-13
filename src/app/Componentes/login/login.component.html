@@ -1,0 +1,24 @@
+<div class="h-full w-full pb-10 flex flex-col items-center justify-center bg-background">
+    <img class="h-1/4" src="../../../assets/user-icon.svg" alt="user-icon" draggable="false">
+    
+    <!-- Formulario Login -->
+    <form class="w-1/2 py-4 flex flex-col items-center" [formGroup]="loginForm">
+        <h1 class="text-orange-600 text-3xl font-semibold my-4 text-center">LOGIN</h1>
+
+        <!-- Input Numero de Empleado -->
+        <label class="text-orange-500 text-xl font-semibold" for="numEmpleado-input">Numero de Empleado</label>
+        <input class="w-1/2 mt-2 mb-4 px-2 py-1 text-lg border border-solid border-orange-700 rounded-lg focus:border-orange-400 transition-all" id="numEmpleado-input" type="number" min="1000" max="9999" placeholder="Ingresa tu numero de empleado" formControlName="numEmpleado">
+
+        <!-- Input Contraseña -->
+        <label class="text-orange-500 text-xl font-semibold" for="password-input">Contraseña</label>
+        <div class="relative w-1/2 flex justify-center">
+            <input class="w-full mt-2 mb-4 px-2 py-1 text-lg border border-solid border-orange-700 rounded-lg focus:border-orange-400 transition-all" id="password-input" 
+            [type]="mostrarContrasena ? 'text' : 'password'" placeholder="Ingresa tu contraseña" formControlName="contraseña">
+            <img class="absolute right-4 bottom-7" src="../../../assets/eye-icon.svg" alt="Mostrar" *ngIf="!mostrarContrasena" (click)="mostrarContrasena = true">
+            <img class="absolute right-4 bottom-7" src="../../../assets/closedEye-icon.svg" alt="Ocultar" *ngIf="mostrarContrasena" (click)="mostrarContrasena = false">
+        </div>
+
+        <!-- Boton Login -->
+        <button class="px-6 py-1 text-orange-500 text-lg font-semibold border border-solid border-orange-500 rounded-full enabled:hover:bg-orange-500 enabled:hover:text-white enabled:active:animate-shrink disabled:opacity-50 disabled:cursor-not-allowed" type="submit" [disabled]="loginForm.invalid" (click)="login()">Login</button>
+    </form>
+</div>
