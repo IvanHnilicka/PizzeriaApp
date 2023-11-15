@@ -13,43 +13,29 @@ import { PizzeriaAPIService } from 'src/app/Servicios/PizzeriaAPI/pizzeria-api.s
 export class MenuPrincipalComponent implements OnInit {
   constructor(private ApiService: PizzeriaAPIService, private router: Router, private toastr: ToastrService) { }
 
-  ngOnInit(): void {
-    this.cargarDatosUsuario();
-    
+  ngOnInit(): void {    
     let token = localStorage.getItem('token')?.toString();
     if(!token){
       this.toastr.error("Inicia sesion para continuar", "Acceso denegado");
       this.router.navigateByUrl('login');
-      return;
-    }    
-  }
+    };
 
-  usuario : IDatosUsuario = {
-    numEmpleado: 0,
-    nombre: '',
-    correo: '',
-    telefono: '',
-    admin: false
-  };
+    this.ApiService.getDatosUsuario().subscribe((res: any) => {
+      let datos = res.value;
+      if(datos){
+        let nombres = datos.nombre.split(' ');
+        this.nombreUsuario = nombres[0];
+        this.isAdmin = datos.admin;
+      }
 
-  async cargarDatosUsuario(){
-    // Obtiene los el numero del empleado loggeado
-    this.ApiService.getNumEmpleadoLoggeado().pipe(
-      switchMap((numEmpleado: number) => {
-        // Retorna los datos del empleado loggeado
-        return this.ApiService.getDatosEmpleadoByNum(numEmpleado);
-      }),
-      // Vuelve a la pagina de login si hay un error
-      catchError((error) => {
-        this.toastr.error(error.error, 'Error');
-        this.router.navigateByUrl('login');
-        localStorage.removeItem('token');
-        return throwError(() => new Error(error.error));
-      })
-    ).subscribe((datos: any) => {
-      this.usuario = datos;
+      if(!this.isAdmin){
+        this.router.navigateByUrl('pedidos');
+      }
     });
   }
+
+  isAdmin: any = false;
+  nombreUsuario: any = '';
 
   logOut(){
     localStorage.removeItem('token');

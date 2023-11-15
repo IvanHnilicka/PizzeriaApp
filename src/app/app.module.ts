@@ -11,13 +11,15 @@ import { LoginComponent } from './Componentes/login/login.component';
 import { RegistroComponent } from './Componentes/registro/registro.component';
 import { MenuPrincipalComponent } from './Componentes/menu-principal/menu-principal.component';
 import { CustomInterceptor } from './Servicios/Interceptor/custom.interceptor';
+import { MenuPedidosComponent } from './Componentes/menu-pedidos/menu-pedidos.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegistroComponent,
-    MenuPrincipalComponent
+    MenuPrincipalComponent,
+    MenuPedidosComponent,
   ],
   imports: [
     BrowserModule,

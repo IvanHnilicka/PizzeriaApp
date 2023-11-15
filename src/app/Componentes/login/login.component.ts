@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -11,8 +11,14 @@ import { PizzeriaAPIService } from 'src/app/Servicios/PizzeriaAPI/pizzeria-api.s
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   constructor(private ApiService: PizzeriaAPIService, private toastr: ToastrService, private router: Router) { }
+  ngOnInit(): void {
+    let token = localStorage.getItem('token');
+    if(token){
+      this.router.navigateByUrl('menu');
+    }
+  }
   
   loginForm: FormGroup = new FormGroup({
     numEmpleado: new FormControl('', [Validators.required, Validators.min(1000), Validators.max(9999)]),
@@ -26,7 +32,13 @@ export class LoginComponent {
       numEmpleado: this.loginForm.controls['numEmpleado'].value,
       contraseña: this.loginForm.controls['contraseña'].value,
     }
-
+    
+    const boton = document.getElementById('login-btn');
+    const spinner = document.getElementById('login-spinner');
+    const passInput = document.getElementById('password-input');
+    passInput?.blur();
+    boton?.classList.add('hidden');
+    spinner?.classList.remove('hidden');
     
     this.ApiService.loginAPI(loginData).pipe(
       catchError((error: any) => {
@@ -36,6 +48,9 @@ export class LoginComponent {
           this.toastr.error('Ha ocurrido un error');
         }
         
+        boton?.classList.remove('hidden');
+        spinner?.classList.add('hidden');
+
         this.loginForm.controls['contraseña'].setValue('');
         localStorage.removeItem('token');
         return throwError(() => new Error(error.error));
