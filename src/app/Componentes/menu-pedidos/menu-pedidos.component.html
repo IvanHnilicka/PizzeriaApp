@@ -26,7 +26,7 @@
             <!-- Contenedor Productos -->
             <div class="h-full flex flex-col gap-6 overflow-y-scroll" *ngIf="pedido.length > 0">                
                 <!-- Producto -->
-                <div class="py-2 flex flex-col gap-1" *ngFor="let producto of productosPedido">
+                <div class="py-2 flex flex-col" *ngFor="let producto of productosPedido">
                     <h1 class="py-1 text-xl font-semibold">{{ producto.nombre }}</h1>
     
                     <!-- Contenedor Cantidad -->
@@ -34,7 +34,7 @@
                         <p class="text-lg">Cantidad: </p>
                         
                         <!-- Boton cantidad -->
-                        <div class="mr-0 flex items-center gap-4 text-lg">
+                        <div class="flex items-center gap-4 text-lg">
                             <button class="h-2/3 px-2 text-[rgb(194,65,12)] rounded-full" (click)="restarProducto(producto)">
                                 <img class="h-full" src="../../../assets/minus-icon.svg" alt="Quitar">
                             </button>
@@ -45,7 +45,13 @@
                                 <img class="h-2/3" src="../../../assets/add-icon.svg" alt="Agregar">
                             </button>
                         </div>
+                    </div>
 
+
+                    <!-- Contenedor precio por productos -->
+                    <div class="flex justify-between">
+                        <h1 class="text-lg">Precio &lpar;x{{calcularCantidad(producto)}}&rpar;:</h1>
+                        <p class="w-28 text-center">${{ calcularCantidad(producto) * producto.costo }}</p>
                     </div>
 
                 </div>
