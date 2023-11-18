@@ -1,0 +1,74 @@
+<div class="relative h-full w-full flex flex-col">
+    <app-header></app-header>
+    
+    <!-- Contenido Principal -->
+    <div class="h-full px-8 py-4 flex flex-col overflow-y-hidden">
+        <div class="w-full mb-4 pr-12 flex justify-between">
+            <h1 class="py-4 text-2xl text-orange-500 font-semibold">ADMINISTRAR USUARIOS</h1>
+            <button class="w-8 mr-4 enabled:active:animate-shrink disabled:opacity-50 disabled:cursor-not-allowed" [disabled]="!loggedUser.admin" routerLink="/agregar_usuario">
+                <img class="w-full" src="../../../assets/add-icon.svg" alt="Agregar">
+            </button>
+        </div>
+        
+        <!-- Tabla Usuarios -->
+        <div class="h-full flex flex-col overflow-y-scroll">
+            <!-- Headers tabla -->
+            <div class="w-full py-2 flex justify-between">
+                <h1 class="w-1/4 text-xl text-orange-500">Id</h1>
+                <h1 class="w-1/2 text-xl text-orange-500">Nombre</h1>
+                <h1 class="w-1/2 text-xl text-orange-500">Correo</h1>
+                <h1 class="w-1/4 text-xl text-orange-500">Telefono</h1>
+                <h1 class="w-1/6 text-xl text-orange-500">Admin</h1>
+                
+                <!-- Headers botones -->
+                <div class="w-1/6 flex gap-8">
+                    <button class="w-12"></button>
+                    <button class="w-10"></button>
+                </div>
+            </div>
+
+            <!-- Contenedor Usuarios -->
+            <div class="py-2 flex flex-col gap-6 justify-between overflow-y-scroll" *ngIf="loggedUser.admin">
+                <!-- Usuario -->
+                <div class="w-full flex" *ngFor="let usuario of usuarios">
+                    <!-- Datos del usuario -->
+                    <h1 class="w-1/4 text-xl">{{ usuario.numEmpleado }}</h1>
+                    <h1 class="w-1/2 text-xl">{{ usuario.nombre }}</h1>
+                    <h1 class="w-1/2 text-xl">{{ usuario.correo }}</h1>
+                    <h1 class="w-1/4 text-xl">{{ usuario.telefono }}</h1>
+                    <h1 class="w-1/6 text-xl">{{ usuario.admin ? 'True' : 'False' }}</h1>
+    
+
+                    <!-- Contenedor botones -->
+                    <div class="w-1/6 flex items-center justify-center gap-8">
+                        <button class="w-1/4 enabled:active:animate-shrink disabled:opacity-50 disabled:cursor-not-allowed" [disabled]="!loggedUser.admin"><img class="w-5" src="../../../assets/edit-icon.svg" alt="Editar" (click)="editarUsuario(usuario.numEmpleado)"></button>
+                        <button class="w-1/4 enabled:active:animate-shrink disabled:opacity-50 disabled:cursor-not-allowed" 
+                        [disabled]="!loggedUser.admin" (click)="showModal(usuario.numEmpleado)">
+                            <img class="w-4" src="../../../assets/trash-icon.svg" alt="Eliminar">
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+               
+        <!-- Contenedor modal -->
+        <div class="absolute left-0 top-0 w-full h-full flex items-center justify-center bg-black/70" *ngIf="modalEliminar">
+            <!-- Modal -->
+            <div class="px-12 py-8 flex flex-col items-center justify-between gap-10 bg-background/80 rounded-3xl">
+                <h1 class="text-3xl text-stone-50 font-semibold">¿Deseas eliminar al usuario {{ numEmpleadoEliminar }}?</h1>
+                <div class="flex gap-8 text-2xl text-white font-semibold">
+                    <button class="px-5 py-2 rounded-full bg-orange-500 hover:bg-orange-600 active:animate-shrink" (click)="deleteUsuario()">
+                        Confirmar
+                    </button>
+                    <button class="px-8 py-2 rounded-full bg-orange-500 hover:bg-orange-600 active:animate-shrink" (click)="modalEliminar = false; numEmpleadoEliminar = -1">
+                        Cancelar
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

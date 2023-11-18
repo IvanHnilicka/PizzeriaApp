@@ -7,7 +7,7 @@ module.exports = {
     extend: {
       animation: {
         shrink: 'shrink 0.15s',
-        rotate: 'rotate 1.5s linear infinite'
+        rotate: 'rotate 1.5s linear infinite',
       },
       keyframes: {
         shrink: {
@@ -17,7 +17,7 @@ module.exports = {
         rotate: {
           '0%': { transform: 'rotate(0deg)' },
           '100%': { transform: 'rotate(360deg)' },
-        }
+        },
       },
       colors: {
         background: '#e6e6e6',
@@ -28,4 +28,3 @@ module.exports = {
   },
   plugins: [],
 }
-

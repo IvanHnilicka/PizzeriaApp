@@ -1,0 +1,84 @@
+<div class="h-full w-full flex flex-col">
+    <app-header></app-header>
+
+    <!-- Contenido Principal -->
+    <div class="w-full h-full flex flex-col justify-center items-center pr-52 pb-20">
+        <h1 class="w-1/2 pl-64 my-6 text-4xl text-orange-500 text-center font-semibold">AGREGAR USUARIO</h1>
+
+        <form class="w-1/2 flex flex-col gap-4 justify-center items-center" [formGroup]="crearUsuarioForm">
+            <!-- Input Nombre -->
+            <div class="w-full flex justify-center gap-6">
+                <label for="input-nombre" class="w-1/3 py-1 text-2xl text-end">Nombre:</label>
+                <input id="input-nombre" class="w-2/3 px-2 py-1 text-2xl mb-4 border border-transparent focus:border-orange-500 transition-all" 
+                [ngClass]="crearUsuarioForm.controls['nombre'].hasError('pattern') ? 'bg-red-200' : 'bg-zinc-100'" 
+                type="text" placeholder="Ingrese nombre completo" autocomplete="off" formControlName="nombre">
+            </div>
+
+            <!-- Input Correo -->
+            <div class="w-full flex justify-center gap-6">
+                <label for="input-correo" class="w-1/3 py-1 text-2xl text-end">Correo:</label>
+                <input id="input-correo" class="w-2/3 px-2 py-1 text-2xl mb-4 border border-transparent focus:border-orange-500 transition-all" 
+                [ngClass]="crearUsuarioForm.controls['correo'].hasError('email') ? 'bg-red-200' : 'bg-zinc-100'" 
+                type="text" placeholder="Ingrese correo electronico" autocomplete="off" formControlName="correo">
+            </div>
+
+            <!-- Input Telefono -->
+            <div class="w-full flex justify-center gap-6">
+                <label for="input-telefono" class="w-1/3 py-1 text-2xl text-end">Telefono:</label>
+                <input id="input-telefono" class="w-2/3 px-2 py-1 text-2xl mb-4 border border-transparent focus:border-orange-500 transition-all"
+                [ngClass]="crearUsuarioForm.controls['telefono'].hasError('pattern') ? 'bg-red-200' : 'bg-zinc-100'"
+                type="number" placeholder="Ingrese los 10 digitos de su numero" autocomplete="off" formControlName="telefono">
+            </div>
+            
+            <!-- Input Contraseña -->
+            <div class="relative w-full flex justify-center gap-6">
+                <label for="input-password" class="w-1/3 py-1 text-2xl text-end">Contraseña:</label>
+                <div class="w-2/3 flex flex-col">
+                    <input id="input-password" class="w-full px-2 py-1 text-2xl mb-4 border border-transparent focus:border-orange-500 transition-colors" 
+                    [ngClass]="crearUsuarioForm.controls['contraseña'].hasError('pattern') ? 'bg-red-200 mb-1' : 'bg-zinc-100'" 
+                    [type]="mostrarContrasena ? 'text' : 'password'" placeholder="Ingrese su contraseña" autocomplete="off" formControlName="contraseña">
+    
+                    <p class="text-center text-red-500/70" *ngIf="crearUsuarioForm.controls['contraseña'].hasError('pattern')">
+                        *Contraseña debe contener minimo 8 caracteres incluyendo letras, numeros, un caracter especial y una letra mayuscula
+                    </p>
+                </div>
+
+                <!-- Botones mostrar contraseña -->
+                <img class="absolute right-4 top-3" src="../../../assets/eye-icon.svg" alt="Mostrar" *ngIf="!mostrarContrasena" (click)="mostrarContrasena = true">
+                <img class="absolute right-4 top-3" src="../../../assets/closedEye-icon.svg" alt="Ocultar" *ngIf="mostrarContrasena" (click)="mostrarContrasena = false">
+            </div>
+            
+            <!-- Input Confirmar Contraseña -->
+            <div class="relative w-full flex justify-center gap-6">
+                <label for="input-password-conf" class="w-1/3 py-1 text-2xl text-end">Confirmar contraseña:</label>
+                <input id="input-password-conf" class="w-2/3 px-2 py-1 text-2xl border border-transparent focus:border-orange-500 transition-all" 
+                [ngClass]="crearUsuarioForm.controls['confirmacion'].hasError('pattern') ? 'bg-red-200' : 'bg-zinc-100'" 
+                [type]="mostrarConfirmacion ? 'text' : 'password'" placeholder="Ingrese de nuevo su contraseña" autocomplete="off" formControlName="confirmacion">
+
+                <!-- Botones mostrar contraseña -->
+                <img class="absolute right-4 top-3" src="../../../assets/eye-icon.svg" alt="Mostrar" *ngIf="!mostrarConfirmacion" (click)="mostrarConfirmacion = true">
+                <img class="absolute right-4 top-3" src="../../../assets/closedEye-icon.svg" alt="Ocultar" *ngIf="mostrarConfirmacion" (click)="mostrarConfirmacion = false">
+            </div>
+            
+            <!-- Input Admin -->
+            <div class="w-full flex justify-start items-center gap-6">
+                <label class="w-1/3 py-1 text-2xl text-end" for="admin-input">Administrador </label>
+                <input id="admin-input" class="w-4 h-4 px-2 py-1 mt-2" type="checkbox" formControlName="administrador">
+            </div>
+        </form>
+
+
+        <!-- Contenedor botones -->
+        <div class="w-1/3 my-2 flex justify-center gap-6 pl-64 text-xl">
+            <button class="px-12 py-2 text-white font-semibold bg-orange-500 rounded-full enabled:active:animate-shrink disabled:opacity-50 disabled:cursor-not-allowed" 
+            type="submit" [disabled]="!crearUsuarioForm.valid" (click)="agregarUsuario()">
+                Agregar
+            </button>
+
+            <button class="px-12 py-2 text-orange-500 font-semibold border border-orange-500 rounded-full active:animate-shrink" 
+            routerLink="/usuarios">
+                Regresar
+            </button>
+        </div>
+    </div>
+</div>

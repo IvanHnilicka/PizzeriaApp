@@ -5,7 +5,7 @@ import { IDatosUsuario } from 'src/app/Modelos/IDatosUsuario';
 import { IProducto } from 'src/app/Modelos/IProducto';
 import { IDetalleVenta } from 'src/app/Modelos/IDetalle-Venta';
 import { PizzeriaAPIService } from 'src/app/Servicios/PizzeriaAPI/pizzeria-api.service';
-import { catchError, throwError } from 'rxjs';
+import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-menu-pedidos',
@@ -22,19 +22,6 @@ export class MenuPedidosComponent implements OnInit {
       this.router.navigateByUrl('login');
     }
 
-
-    // Carga los datos del usuario
-    this.ApiService.getDatosUsuario().subscribe({
-      next: (datos: any) => {
-        this.usuario = datos.value;
-      },
-      error: (error: any) => {
-        console.log(error);
-        this.toastr.error(error.message, 'Ha ocurrido un error');
-      }
-    });
-
-
     // Carga la lista de productos para mostrar en el menu
     this.ApiService.getProductos().subscribe({
       next: (datos: any) => {
@@ -42,8 +29,19 @@ export class MenuPedidosComponent implements OnInit {
       },
       error: (error) => {
         this.toastr.error(error.message, 'Ha ocurrido un error');
+        return;
       }
     });
+
+    this.ApiService.getDatosUsuarioLoggeado().subscribe({
+      next: (res: any) => {
+        this.usuario = res.value;
+      },
+      error: (error: HttpErrorResponse) => {
+        this.toastr.error(error.message, 'Ha ocurrido un error');
+        console.log(error);
+      } 
+    })
   }
 
   usuario: IDatosUsuario = {
@@ -54,6 +52,7 @@ export class MenuPedidosComponent implements OnInit {
     admin: false,
   }
 
+  loadingProductos = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
   listaProductos: IProducto[] = [];
   pedido: IProducto[] = [];
   productosPedido: Set<IProducto> = new Set();

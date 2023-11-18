@@ -23,6 +23,14 @@ input[type=number]{
   -moz-appearance: textfield;
 }
 
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(251, 146, 60);
+}
+
 /* based on angular-toastr css https://github.com/Foxandxss/angular-toastr/blob/cb508fe6801d6b288d3afc525bb40fee1b101650/dist/angular-toastr.css */
 
 /* position */
@@ -32,7 +40,8 @@ input[type=number]{
   transform: translate(-50%, -50%);
 }
 .toast-top-center {
-  top: 20px;
+  margin-top: 10px;
+  top: 0;
   right: 0;
   width: 100%;
 }
@@ -128,7 +137,6 @@ button.toast-close-button {
   background-position: 15px center;
   background-repeat: no-repeat;
   background-size: 24px;
-  /* box-shadow: 0 0 12px #525252; */
   color: #FFFFFF;
 }
 .toast-container .ngx-toastr:hover {

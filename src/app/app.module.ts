@@ -12,6 +12,10 @@ import { RegistroComponent } from './Componentes/registro/registro.component';
 import { MenuPrincipalComponent } from './Componentes/menu-principal/menu-principal.component';
 import { CustomInterceptor } from './Servicios/Interceptor/custom.interceptor';
 import { MenuPedidosComponent } from './Componentes/menu-pedidos/menu-pedidos.component';
+import { UsuariosComponent } from './Componentes/usuarios/usuarios.component';
+import { HeaderComponent } from './Componentes/header/header.component';
+import { CrearUsuarioComponent } from './Componentes/crear-usuario/crear-usuario.component';
+import { EditarUsuarioComponent } from './Componentes/editar-usuario/editar-usuario.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +24,10 @@ import { MenuPedidosComponent } from './Componentes/menu-pedidos/menu-pedidos.co
     RegistroComponent,
     MenuPrincipalComponent,
     MenuPedidosComponent,
+    UsuariosComponent,
+    HeaderComponent,
+    CrearUsuarioComponent,
+    EditarUsuarioComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,8 +39,9 @@ import { MenuPedidosComponent } from './Componentes/menu-pedidos/menu-pedidos.co
     ToastrModule.forRoot({
       preventDuplicates: true,
       resetTimeoutOnDuplicate: false,
-      timeOut: 2500,
+      timeOut: 3000,
       positionClass: 'toast-top-center',
+      maxOpened: 1,
     }),
   ],
   providers: [{

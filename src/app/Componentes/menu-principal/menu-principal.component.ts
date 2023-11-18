@@ -18,27 +18,19 @@ export class MenuPrincipalComponent implements OnInit {
     if(!token){
       this.toastr.error("Inicia sesion para continuar", "Acceso denegado");
       this.router.navigateByUrl('login');
-    };
-
-    this.ApiService.getDatosUsuario().subscribe((res: any) => {
-      let datos = res.value;
-      if(datos){
-        let nombres = datos.nombre.split(' ');
-        this.nombreUsuario = nombres[0];
-        this.isAdmin = datos.admin;
-      }
-
-      if(!this.isAdmin){
-        this.router.navigateByUrl('pedidos');
-      }
-    });
+    }else{
+      this.ApiService.getDatosUsuarioLoggeado().subscribe((res: any) => {
+        let datos = res.value;
+        if(datos){
+          this.isAdmin = datos.admin;
+        }
+  
+        if(!this.isAdmin){
+          this.router.navigateByUrl('pedidos');
+        }
+      });
+    }
   }
 
   isAdmin: any = false;
-  nombreUsuario: any = '';
-
-  logOut(){
-    localStorage.removeItem('token');
-    this.router.navigateByUrl('login');
-  }
 }
