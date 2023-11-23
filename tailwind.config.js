@@ -23,6 +23,9 @@ module.exports = {
         background: '#e6e6e6',
         darkOrange: '#c2410c',
         normalOrange: '#e05f28',
+      },
+      backgroundImage: {
+        'pizza': "url('src/assets/Pizza-bg.jpg')"
       }
     },
   },

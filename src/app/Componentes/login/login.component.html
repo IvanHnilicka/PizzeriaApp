@@ -1,28 +1,31 @@
-<div class="h-full w-full pb-10 flex flex-col items-center justify-center">
-    <img class="h-1/4" src="../../../assets/user-icon.svg" alt="user-icon" draggable="false">
+<div class="h-full w-full pb-10 flex flex-col items-center justify-center bg-pizza">
     
     <!-- Formulario Login -->
-    <form class="w-1/2 py-4 flex flex-col items-center" [formGroup]="loginForm">
-        <h1 class="text-orange-600 text-3xl font-semibold my-4 text-center">LOGIN</h1>
+    <form class="relative w-1/4 py-14 flex flex-col items-center bg-black/80 rounded-3xl" [formGroup]="loginForm">
+        <div class="absolute -top-24 w-40 p-1 bg-white rounded-full">
+            <img class="w-full" src="../../../assets/user-icon.svg" alt="user-icon" draggable="false">
+        </div>
+
+        <h1 class="mt-8 text-orange-600 text-3xl font-bold my-4 text-center">LOGIN</h1>
 
         <!-- Input Numero de Empleado -->
-        <label class="text-orange-500 text-xl font-semibold" for="numEmpleado-input">Numero de Empleado</label>
-        <input class="w-1/2 mt-2 mb-4 px-2 py-1 text-lg border focus:border-orange-500 rounded-lg transition-all" id="numEmpleado-input" type="number" min="1000" max="9999" placeholder="Ingresa tu numero de empleado" formControlName="numEmpleado">
+        <label class="text-orange-400 text-xl font-semibold" for="numEmpleado-input">Numero de Empleado</label>
+        <input id="numEmpleado-input"  class="w-2/3 mt-2 mb-4 px-3 py-1 text-lg border-2 border-transparent focus:border-orange-400 rounded-lg transition-all" type="number" min="1000" max="9999" placeholder="Ingresa tu numero de empleado" formControlName="numEmpleado">
 
         <!-- Input Contraseña -->
-        <label class="text-orange-500 text-xl font-semibold" for="password-input">Contraseña</label>
-        <div class="relative w-1/2 flex justify-center">
-            <input id="password-input" class="w-full mt-2 mb-4 px-2 py-1 text-lg border focus:border-orange-500 rounded-lg transition-all"
+        <label class="text-orange-400 text-xl font-semibold" for="password-input">Contraseña</label>
+        <div class="relative w-full flex justify-center">
+            <input id="password-input" class="w-2/3 mt-2 mb-4 px-3 py-1 text-lg border-2 border-transparent focus:border-orange-400 rounded-lg transition-all"
             [type]="mostrarContrasena ? 'text' : 'password'" placeholder="Ingresa tu contraseña" formControlName="contraseña">
-            <img class="absolute right-4 bottom-7" src="../../../assets/eye-icon.svg" alt="Mostrar" *ngIf="!mostrarContrasena" (click)="mostrarContrasena = true">
-            <img class="absolute right-4 bottom-7" src="../../../assets/closedEye-icon.svg" alt="Ocultar" *ngIf="mostrarContrasena" (click)="mostrarContrasena = false">
+            <img class="absolute right-20 bottom-7 mr-4" src="../../../assets/eye-icon.svg" alt="Mostrar" *ngIf="!mostrarContrasena" (click)="mostrarContrasena = true">
+            <img class="absolute right-20 bottom-7 mr-4" src="../../../assets/closedEye-icon.svg" alt="Ocultar" *ngIf="mostrarContrasena" (click)="mostrarContrasena = false">
         </div>
 
         <!-- Boton Login -->
-        <button id="login-btn" class="px-6 py-1 text-orange-500 text-lg font-semibold border border-orange-500 rounded-full enabled:hover:bg-orange-500 enabled:hover:text-white enabled:active:animate-shrink disabled:opacity-50 disabled:cursor-not-allowed" type="submit" [disabled]="loginForm.invalid" (click)="login()">Login</button>
+        <button id="login-btn" class="mt-6 px-6 py-1 text-orange-500 text-lg font-semibold border border-orange-500 rounded-full enabled:hover:bg-orange-500 enabled:hover:text-white enabled:active:animate-shrink disabled:opacity-70 disabled:cursor-not-allowed" type="submit" [disabled]="loginForm.invalid" (click)="login()">Login</button>
 
         <!-- Spinner -->
-        <img id="login-spinner" class="hidden h-8 animate-rotate" src="../../../assets/spinner-icon.svg" alt="Cargando">
+        <img id="login-spinner" class="hidden h-8 animate-rotate mt-7" src="../../../assets/spinner-icon.svg" alt="Cargando">
 
     </form>
 </div>

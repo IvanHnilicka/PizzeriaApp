@@ -2,12 +2,12 @@
     <app-header></app-header>
 
     <!-- Contenedor principal -->
-    <div class="w-full h-full px-4 flex overflow-y-scroll">
+    <div class="w-full h-full flex overflow-y-scroll">
 
         <!-- Contenedor Productos -->
         <div class="w-3/4 p-4 grid grid-cols-3 gap-4 border border-l-transparent border-r-orange-500 overflow-y-scroll" *ngIf="listaProductos.length > 0">            
             <!-- Producto -->
-            <button class="h-[180px] flex flex-col items-center justify-center border border-orange-500" 
+            <button class="h-[180px] flex flex-col items-center justify-center bg-orange-400/90 text-white hover:bg-orange-400 transition-all" 
             *ngFor="let producto of listaProductos" (click)="agregarProducto(producto)">
                 <h1 class="text-2xl mb-2">{{ producto.nombre }}</h1>
                 <p class="text-xl">${{ producto.costo }}</p>
