@@ -32,6 +32,10 @@ export class PizzeriaAPIService {
     return this.http.get(`${this.urlApi}/productos`)
   }
 
+  getVentasMes(mes: number){
+    return this.http.get(`${this.urlApi}/ventas/mes/${mes}`);
+  }
+
 
   /* Metodos POST */
   loginAPI(loginData: ILogin){

@@ -16,6 +16,7 @@ import { UsuariosComponent } from './Componentes/usuarios/usuarios.component';
 import { HeaderComponent } from './Componentes/header/header.component';
 import { CrearUsuarioComponent } from './Componentes/crear-usuario/crear-usuario.component';
 import { EditarUsuarioComponent } from './Componentes/editar-usuario/editar-usuario.component';
+import { ReporteVentasComponent } from './Componentes/reporte-ventas/reporte-ventas.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { EditarUsuarioComponent } from './Componentes/editar-usuario/editar-usua
     HeaderComponent,
     CrearUsuarioComponent,
     EditarUsuarioComponent,
+    ReporteVentasComponent,
   ],
   imports: [
     BrowserModule,

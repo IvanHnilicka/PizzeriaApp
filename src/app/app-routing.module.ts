@@ -7,6 +7,7 @@ import { MenuPedidosComponent } from './Componentes/menu-pedidos/menu-pedidos.co
 import { UsuariosComponent } from './Componentes/usuarios/usuarios.component';
 import { CrearUsuarioComponent } from './Componentes/crear-usuario/crear-usuario.component';
 import { EditarUsuarioComponent } from './Componentes/editar-usuario/editar-usuario.component';
+import { ReporteVentasComponent } from './Componentes/reporte-ventas/reporte-ventas.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'usuarios', component: UsuariosComponent },
   { path: 'agregar_usuario', component: CrearUsuarioComponent },
   { path: 'editar_usuario/:numEmpleado', component: EditarUsuarioComponent },
+  { path: 'ventas', component: ReporteVentasComponent },
   { path: '**', redirectTo: 'login' }
 ];
 

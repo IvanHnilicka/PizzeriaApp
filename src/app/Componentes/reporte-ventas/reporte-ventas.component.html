@@ -1,0 +1,63 @@
+<div class="relative h-full w-full flex flex-col">
+    <app-header></app-header>
+    
+    <!-- Contenido Principal -->
+    <div class="h-full px-8 py-4 flex flex-col overflow-y-hidden">
+        <div class="w-full pr-12 flex flex-col justify-between gap-4">
+            <h1 class="text-2xl text-orange-500 font-semibold">REPORTE DE VENTAS</h1>
+            
+            <!-- Inputs mes y orden -->
+            <div class="flex gap-10 mb-2">
+                <div class="flex gap-4">
+                    <label for="mes-input" class="text-orange-400 font-semibold">Seleccione un mes:</label>
+                    <select name="mes" id="mes-input" [(ngModel)]="mes" (change)="getVentas()">
+                        <option value="1">Enero</option>
+                        <option value="2">Febrero</option>
+                        <option value="3">Marzo</option>
+                        <option value="4">Abril</option>
+                        <option value="5">Mayo</option>
+                        <option value="6">Junio</option>
+                        <option value="7">Julio</option>
+                        <option value="8">Agosto</option>
+                        <option value="9">Septiembre</option>
+                        <option value="10">Octubre</option>
+                        <option value="11">Noviembre</option>
+                        <option value="12">Diciembre</option>
+                    </select>
+                </div>
+                <div class="flex gap-4">
+                    <label for="sort-input" class="text-orange-400 font-semibold">Ordenar por:</label>
+                    <select name="sortMethod" id="sort-input" [(ngModel)]="sortMethod" (change)="sort()">
+                        <option value="nombre">Nombre</option>
+                        <option value="cantidad">Cantidad vendida</option>
+                        <option value="ganancias">Ganancias</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        
+
+        <!-- Tabla Ventas -->
+        <div class="h-full my-4 flex flex-col overflow-y-scroll">
+            <!-- Headers tabla -->
+            <div class="w-full pb-2 flex justify-between">
+                <h1 class="w-1/4 text-xl text-orange-500">Producto</h1>
+                <h1 class="w-1/4 text-xl text-orange-500">Precio unitario</h1>
+                <h1 class="w-1/4 text-xl text-orange-500">Cantidad vendida</h1>
+                <h1 class="w-1/4 text-xl text-orange-500">Ganancias</h1>
+            </div>
+
+
+            <!-- Contenedor Productos -->
+            <div class="py-2 flex flex-col gap-6 justify-between overflow-y-scroll" *ngIf="isAdmin">
+                <!-- Producto -->
+                <div class="w-full flex" *ngFor="let venta of ventas">
+                    <h1 class="w-1/4 text-xl">{{ venta.producto }}</h1>
+                    <h1 class="w-1/4 text-xl">${{ venta.precio }}</h1>
+                    <h1 class="w-1/4 pl-2 text-xl">{{ venta.cantidadVendida }}</h1>
+                    <h1 class="w-1/4 pl-2 text-xl">${{ venta.ganancias.toFixed(2) }}</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
