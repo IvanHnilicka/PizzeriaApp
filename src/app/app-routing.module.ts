@@ -8,6 +8,9 @@ import { UsuariosComponent } from './Componentes/usuarios/usuarios.component';
 import { CrearUsuarioComponent } from './Componentes/crear-usuario/crear-usuario.component';
 import { EditarUsuarioComponent } from './Componentes/editar-usuario/editar-usuario.component';
 import { ReporteVentasComponent } from './Componentes/reporte-ventas/reporte-ventas.component';
+import { ProductosComponent } from './Componentes/productos/productos.component';
+import { AgregarProductoComponent } from './Componentes/agregar-producto/agregar-producto.component';
+import { EditarProductoComponent } from './Componentes/editar-producto/editar-producto.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -18,6 +21,9 @@ const routes: Routes = [
   { path: 'agregar_usuario', component: CrearUsuarioComponent },
   { path: 'editar_usuario/:numEmpleado', component: EditarUsuarioComponent },
   { path: 'ventas', component: ReporteVentasComponent },
+  { path: 'productos', component: ProductosComponent },
+  { path: 'agregar_producto', component: AgregarProductoComponent },
+  { path: 'editar_producto/:idProducto', component: EditarProductoComponent },
   { path: '**', redirectTo: 'login' }
 ];
 

@@ -2,7 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { VentaProducto } from 'src/app/Modelos/venta-producto';
+import { VentaProducto } from 'src/app/Modelos/IVenta-Producto';
 import { PizzeriaAPIService } from 'src/app/Servicios/PizzeriaAPI/pizzeria-api.service';
 
 @Component({
@@ -28,6 +28,7 @@ export class ReporteVentasComponent implements OnInit {
   
         if(!this.isAdmin){
           this.router.navigateByUrl('pedidos');
+          this.toastr.error('No cuentas con permisos de administrador', 'Error');
         }
       });
     }

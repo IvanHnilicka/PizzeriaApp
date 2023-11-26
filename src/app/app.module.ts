@@ -17,6 +17,9 @@ import { HeaderComponent } from './Componentes/header/header.component';
 import { CrearUsuarioComponent } from './Componentes/crear-usuario/crear-usuario.component';
 import { EditarUsuarioComponent } from './Componentes/editar-usuario/editar-usuario.component';
 import { ReporteVentasComponent } from './Componentes/reporte-ventas/reporte-ventas.component';
+import { ProductosComponent } from './Componentes/productos/productos.component';
+import { AgregarProductoComponent } from './Componentes/agregar-producto/agregar-producto.component';
+import { EditarProductoComponent } from './Componentes/editar-producto/editar-producto.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +33,9 @@ import { ReporteVentasComponent } from './Componentes/reporte-ventas/reporte-ven
     CrearUsuarioComponent,
     EditarUsuarioComponent,
     ReporteVentasComponent,
+    ProductosComponent,
+    AgregarProductoComponent,
+    EditarProductoComponent,
   ],
   imports: [
     BrowserModule,

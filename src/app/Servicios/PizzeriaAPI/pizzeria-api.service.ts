@@ -4,6 +4,8 @@ import { ILogin } from 'src/app/Modelos/ILogin';
 import { IDetalleVenta } from 'src/app/Modelos/IDetalle-Venta';
 import { INuevoUsuario } from 'src/app/Modelos/INuevo-Usuario';
 import { INuevoEmpleado } from 'src/app/Modelos/inuevo-empleado';
+import { INuevoProducto } from 'src/app/Modelos/INuevo-Producto';
+import { IProducto } from 'src/app/Modelos/IProducto';
 
 @Injectable({
   providedIn: 'root'
@@ -32,6 +34,10 @@ export class PizzeriaAPIService {
     return this.http.get(`${this.urlApi}/productos`)
   }
 
+  getProductoById(productoId: number){
+    return this.http.get(`${this.urlApi}/productos/${productoId}`);
+  }
+
   getVentasMes(mes: number){
     return this.http.get(`${this.urlApi}/ventas/mes/${mes}`);
   }
@@ -58,6 +64,10 @@ export class PizzeriaAPIService {
     return this.http.post(`${this.urlApi}/empleados`, nuevoEmpleado)
   }
 
+  agregarProducto(nuevoProducto: INuevoProducto){
+    return this.http.post(`${this.urlApi}/productos`, nuevoProducto);
+  }
+
 
   /* Metodos PUT */
   updateTotal(){
@@ -72,6 +82,10 @@ export class PizzeriaAPIService {
     return this.http.put(`${this.urlApi}/empleados/${numEmpleado}`, nuevosDatos);
   }
 
+  updateProducto(idProducto: number, productoActualizado: INuevoProducto){
+    return this.http.put(`${this.urlApi}/productos/${idProducto}`, productoActualizado);
+  }
+
 
   /* Metodos DELETE */
   deleteUser(numEmpleado: number){
@@ -80,5 +94,9 @@ export class PizzeriaAPIService {
 
   deleteEmpleado(numEmpleado: number){
     return this.http.delete(`${this.urlApi}/empleados/${numEmpleado}`);
+  }
+
+  deleteProducto(nombreProducto: string){
+    return this.http.delete(`${this.urlApi}/productos/${nombreProducto}`);
   }
 }
