@@ -41,8 +41,8 @@ export class CrearUsuarioComponent implements OnInit {
     nombre: new FormControl('', [Validators.required, Validators.pattern(/^[A-Za-z ]+$/)]),
     correo: new FormControl('', [Validators.required, Validators.email]),
     telefono: new FormControl('', [Validators.required, Validators.pattern(/^\d{10}$/)]),
-    contraseña: new FormControl('', [Validators.required, Validators.pattern(/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&_])[A-Za-z\d@$!%*?&_]{8,}$/)]),
-    confirmacion: new FormControl('', [Validators.required, Validators.pattern(/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&_])[A-Za-z\d@$!%*?&_]{8,}$/)]),
+    contraseña: new FormControl('', [Validators.required, Validators.pattern(/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&#_])[A-Za-z\d@$!%*?&#_]{8,}$/)]),
+    confirmacion: new FormControl('', [Validators.required, Validators.pattern(/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&#_])[A-Za-z\d@$!%*?&#_]{8,}$/)]),
     administrador: new FormControl(false),
   })
 

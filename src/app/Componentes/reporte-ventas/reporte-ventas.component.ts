@@ -72,4 +72,22 @@ export class ReporteVentasComponent implements OnInit {
       });
     }
   }
+
+  getCantidadTotal(): number{
+    let cantidadTotal = 0;
+    this.ventas.forEach(v => {
+      cantidadTotal += v.cantidadVendida;
+    });
+
+    return cantidadTotal;
+  }
+
+  getTotalGanancias(): number{
+    let totalGanancias = 0;
+    this.ventas.forEach(v => {
+      totalGanancias += v.ganancias;
+    });
+
+    return totalGanancias;
+  }
 }
