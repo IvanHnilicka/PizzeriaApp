@@ -35,7 +35,7 @@ export class ReporteVentasComponent implements OnInit {
   }
 
   isAdmin = false;
-  mes: number = (new Date().getMonth() + 1) % 12;
+  mes: number = new Date().getMonth() + 1;
   sortMethod: string = 'nombre';
   ventas: VentaProducto[] = [];
 
