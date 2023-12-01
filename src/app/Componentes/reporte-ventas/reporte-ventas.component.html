@@ -38,7 +38,7 @@
         
 
         <!-- Tabla Ventas -->
-        <div class="h-full mt-4 flex flex-col overflow-y-scroll">
+        <div class="h-full mt-4 flex flex-col overflow-y-scroll" *ngIf="ventas.length > 0">
             <!-- Headers tabla -->
             <div class="w-full pb-2 flex gap-10">
                 <h1 class="w-80 text-xl text-orange-500">Producto</h1>
@@ -70,6 +70,12 @@
                     <h1 class="w-80 pl-2 text-xl">${{ getTotalGanancias().toFixed(2) }}</h1>
                 </div>
             </div>
+        </div>
+
+        <!-- Div cargando datos -->
+        <div class="w-full h-full flex flex-col gap-3 items-center justify-center" *ngIf="ventas.length < 1">
+            <img class="w-14 animate-rotate" src="../../../assets/spinner-icon.svg" alt="Cargando...">
+            <h1 class="font-semibold">Cargando...</h1>
         </div>
     </div>
 </div>

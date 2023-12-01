@@ -5,7 +5,6 @@ import { IDetalleVenta } from 'src/app/Modelos/IDetalle-Venta';
 import { INuevoUsuario } from 'src/app/Modelos/INuevo-Usuario';
 import { INuevoEmpleado } from 'src/app/Modelos/inuevo-empleado';
 import { INuevoProducto } from 'src/app/Modelos/INuevo-Producto';
-import { IProducto } from 'src/app/Modelos/IProducto';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +13,8 @@ export class PizzeriaAPIService {
 
   constructor(private http: HttpClient) { }
 
-  private urlApi = 'https://localhost:7219';
+  //private urlApi = 'https://localhost:7219';
+  private urlApi = 'https://pizzeriaapi.azurewebsites.net';
 
 
   /* Metodos GET */
